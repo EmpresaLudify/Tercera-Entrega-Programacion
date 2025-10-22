@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'Dino';
+    src: url('../Fonts/Cute\ Dino.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Dino';
+    background-color: #fefee3;
+    color: #333;
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2e7d32;
+    margin-bottom: 2rem;
+}
+
+section {
+    background-color: #ffffff;
+    border: 3px dashed #81c784;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.6rem;
+    color: #388e3c;
+    margin-bottom: 0.8rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li::before {
+    margin-right: 0.3rem;
+}
+
+footer {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 2rem;
+    color: #666;
+}
+
+.volver-btn {
+    display: inline-block;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-family: 'Dino';
+    transition: background-color 0.3s ease;
+}
+
+.volver-btn:hover {
+    background-color: #388e3c;
+}

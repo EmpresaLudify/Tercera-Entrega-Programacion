@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Dino';
+}
+
+@font-face {
+  font-family: 'Dino';
+  src: url('../Fonts/Cute\ Dino.ttf') format('truetype');
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: white;
+  font-family: 'Dino';
+}
+
+.acciones {
+  display: flex;
+  gap: 1rem;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('../images/FondoPlay.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-central {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#zona-NuevaPartida {
+  position: absolute;
+  top: -25px;
+  left: -230px;
+  width: 140px;
+  height: 200px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#zona-Opciones {
+  position: absolute;
+  top: 20px;
+  left: 460px;
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#zona-Salir {
+  position: absolute;
+  top: 190px;
+  left: 380px;
+  width: 210px;
+  height: 70px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+.bienvenida {
+  all: unset;
+  color: white;
+  font-size: 1.3rem;
+  margin-top: 0.8rem;
+  font-family: 'Dino', sans-serif;
+  margin-right: 1rem;
+}
+
+.level {
+  all: unset;
+  color: white;
+  font-size: 1.3rem;
+  margin-top: 0.8rem;
+  font-family: 'Dino', sans-serif;
+}

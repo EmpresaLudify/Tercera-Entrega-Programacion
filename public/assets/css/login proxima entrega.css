@@ -1,0 +1,468 @@
+@font-face {
+  font-family: 'Dino'; 
+  src: url('../Fonts/Cute\ Dino.ttf') format('truetype'); 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Dino';
+  min-height: 100vh;
+  background-image: url('../Images/fondo-escritorio-login.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  flex-direction: column;
+}
+
+.login-container {
+  position: relative;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  max-width: 90vw;
+  text-align: center;
+  margin-bottom: -40px;
+}
+
+.inputs-contenedor {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    background: transparent;
+    margin-bottom: 4px;
+  }
+
+.login-container input {
+  font-family: 'Dino'; 
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  background-color: transparent;
+  border: transparent;
+  border-radius: 5px;
+  outline: none; 
+  font-size: 1rem;
+}
+
+.login-container button {
+  font-family: 'Dino'; 
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background-color: transparent;
+  border: transparent;
+  margin-bottom: 8px;
+}
+
+.login-container button:hover {
+  transform: scale(1.1);
+}
+
+.sesion-error {
+  color: red;
+  min-height: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-button img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.close-button img:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  body {
+    background-image: url('../Imagenes/fondo-tablet.jpg');
+  }
+}
+
+@media (min-width: 390px) and (max-width: 414px) {
+  body {
+    width: 100vw;
+    height: 100vh;  
+    background-image: url('../Images/fondo-movil-login.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 0;
+    min-height: 100vh;
+    margin-top: 420px;
+  }
+
+  .titulo-contenedor {
+    width: 180px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+    background: transparent;
+  }
+
+  .titulo-login {
+    font-size: 1.2rem;
+    margin-top: 110px;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .inputs-contenedor {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background: transparent;
+    margin-bottom: 110px;
+    margin-top: 10px;
+  }
+
+  .inputs-contenedor input {
+    width: 270px;
+    padding: 8px;
+    padding-left: 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .boton-contenedor {
+    width: 130px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin-top: 15px;
+  }
+
+  .boton-contenedor button {
+    width: 100px;
+    padding: 6px 0;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 200px;
+  }
+
+  .sesion-error {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    height: 1.2rem;
+    text-align: center;
+    color: red;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .close-button img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    background-image: url('../Images/fondo-movil-login.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -10px;
+  }
+
+  .titulo-contenedor {
+    width: 180px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin-bottom: 60px;
+  }
+
+  .titulo-login {
+    font-size: 1.2rem;
+    margin-top: 115px;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .inputs-contenedor {
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: transparent;
+    margin-bottom: 110px;
+  }
+
+  .inputs-contenedor input {
+    width: 190px;
+    padding: 8px;
+    font-size: 0.9rem;
+    text-align: left;
+    margin: 0 auto;
+    margin-bottom: 6px;
+  }
+
+  .boton-contenedor {
+    width: 130px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .boton-contenedor button {
+    width: 100px;
+    padding: 6px 0;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 215px;
+  }
+
+  .sesion-error {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    height: 1.2rem;
+    text-align: center;
+    color: red;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .close-button img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 361px) {
+  .login-container {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+  }
+
+  .titulo-login {
+    font-size: 1.3rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-form input {
+    width: 160px;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .login-form button {
+    width: 100px;
+    margin-top: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .sesion-error {
+    font-size: 0.8rem;
+    height: 1.2rem;
+    margin-top: 0;
+  }
+
+  .close-button {
+    top: 6px;
+    right: 6px;
+  }
+
+  .close-button img {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media (max-width: 320px) {
+  body {
+    background-image: url('../Images/fondo-movil-login.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .login-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 28px;
+    max-height: 100px;
+    margin-bottom: 245px;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-height: 200px;
+    margin-bottom: 112px;
+  }
+
+  .titulo-contenedor {
+    width: 160px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin-bottom: 56px;
+  }
+
+  .titulo-login {
+    font-size: 1rem;
+    margin-top: 112px;
+    padding: 0;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .inputs-contenedor {
+    width: 220px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: transparent;
+    margin-bottom: 115px;
+  }
+
+  .inputs-contenedor input {
+    width: 170px;
+    padding: 5px 8px;
+    font-size: 0.85rem;
+    text-align: left;
+    margin: 0;
+    margin-left: 25px;
+  }
+
+  .boton-contenedor {
+    width: 120px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .boton-contenedor button {
+    width: 90px;
+    padding: 6px 0;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 225px;
+  }
+
+  .sesion-error {
+    font-size: 0.75rem;
+    height: 1.2rem;
+    text-align: center;
+    margin-top: -100px;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .close-button img {
+    width: 20px;
+    height: 20px;
+  }
+}

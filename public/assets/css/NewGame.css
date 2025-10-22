@@ -1,0 +1,234 @@
+@font-face {
+  font-family: 'Dino';
+  src: url('../Fonts/Cute\ Dino.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Dino';
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('../Images/FondoNewGame.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.config-container {
+  width: 100%;
+  max-width: 380px;
+  background-color: transparent;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.config-container h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #e98c00;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: transparent;
+  box-shadow: 0 0 8px transparent;
+}
+
+button {
+  top: 135px;
+  left: -40px;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: transparent;
+  color: transparent;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  position: relative;
+}
+
+button:hover {
+  background-color: transparent;
+  color: transparent;
+  box-shadow: transparent;
+  transform: scale(1.03);
+}
+
+#jugadores-container {
+  top: 25px;
+  left: -50px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+}
+
+.jugador-option {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.jugador-option:hover {
+  background: transparent;
+}
+
+.jugador-option.selected {
+  background: transparent;
+  color: white;
+  box-shadow: transparent;
+}
+
+#zona-seguimiento,
+#zona-online,
+#zona-jugadores {
+  position: absolute;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+#zona-seguimiento {
+  top: 250px;
+  left: 680px;
+  width: 100px;
+  height: 110px;
+}
+
+#zona-online {
+  top: 250px;
+  left: 560px;
+  width: 100px;
+  height: 100px;
+}
+
+#zona-jugadores {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 120px;
+}
+
+#nombres-jugadores-container {
+  position: absolute;
+  top: 85px;
+  left: -10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 340px;
+}
+
+#nombres-jugadores-container input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#nombre {
+  position: absolute;
+  top: -35px;
+  left: -25px;
+  width: 360px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: #333;
+}
+
+#password-container {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  width: 0px;
+  height: 0px;
+  background: transparent;
+  padding: 10px;
+  border-radius: 8px;
+  display: none;
+  z-index: 1000;
+}
+
+#barra-contraseña {
+  position: absolute;
+  top: -2px;
+  left: -172px;
+  width: 250px;
+  height: 50px;
+  z-index: -1;
+}
+
+#password-container input {
+  position: absolute;
+  top: -4px;
+  left: -172px;
+  width: 250px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: transparent;
+}
+
+#zona-unirse {
+  position: absolute;
+  top: 240px;
+  left: 430px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+#zona-volver {
+  position: absolute;
+  top: -100px;
+  left: 460px;
+  width: 200px;
+  height: 280px;
+  background-color: transparent;
+  cursor: pointer;
+}
