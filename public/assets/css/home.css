@@ -75,34 +75,38 @@ body {
 #zona-jugar:hover,
 #zona-como-jugar:hover,
 #zona-creditos:hover,
-#zona-taquilla:hover {
+#zona-taquilla:hover
+#zona-idioma:hover {
   filter: brightness(1.2);
 }
 
 #zona-jugar {
   top: 38.5%;
-  left: 39%;
-  width: 22%;
-  height: 43%;
+  left: 33%;
+  width: 28%;
+  height: 48%;
 }
 
 #zona-taquilla {
-  top: 59%;
-  left: 71%;
-  width: 18.5%;
-  height: 25%;
+  top: 55%;             /* antes 65 → sube (más arriba) */
+  left: 66%;            /* antes 73 → se mueve a la izquierda */
+  width: 28%;           /* antes 18.5 → más ancha (≈ +1.5x) */
+  height: 38%;          /* antes 29 → más alta (≈ +1.5x) */
+  cursor: pointer;
+  z-index: 9999;
 }
 
 #zona-como-jugar {
-  top: 52%;
-  left: 8%;
-  width: 13%;
-  height: 7%;
+  top: 47.5%;            /* antes 49 → sube un poco */
+  left: 9%;             /* igual que antes, queda bien alineado */
+  width: 15%;            /* antes 13 → más ancho hacia la derecha */
+  height: 9%;            /* antes 7 → más alto (arriba y abajo) */
 }
 
+
 #zona-creditos {
-  top: 63%;
-  left: 8.5%;
+  top: 60%;              /* antes 63 → sube un poco */
+  left: 10.5%;           /* antes 8.5 → un poco más a la derecha */
   width: 11%;
   height: 7%;
 }
@@ -117,8 +121,6 @@ body {
   background: transparent;
   z-index: 6;
 }
-
-
 
 header {
   height: 110px;
@@ -224,4 +226,27 @@ header.con-sesion {
   }
 }
 
+/* 📱 ROTAR PÁGINA EN CELULARES (modo vertical) */
+@media screen and (max-aspect-ratio: 1/1) {
+  html, body {
+    width: 100vh;
+    height: 100vw;
+    overflow: hidden;
+  }
+
+  .home-stage {
+    transform: rotate(-90deg);
+    transform-origin: center center;
+    width: 100vh;
+    height: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* 🔧 Ajusta posición de zonas clickeables */
+  .home-stage * {
+    transform: rotate(90deg);
+  }
+}
 

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Dino';
-  src: url('../Fonts/Cute\ Dino.ttf') format('truetype');
+  src: url('../Fonts/Cute Dino.ttf') format('truetype');
 }
 
 * {
@@ -17,48 +17,31 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   align-items: center;
 }
 
 .login-container {
-  width: 100%;
-  max-width: 360px;
-  padding: 2rem;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
-}
-
-.login-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.login-container {
-  position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 
+/* 🧾 Campo Usuario */
 #campo-usuario {
   position: absolute;
-  top: 380px;
+  top: 380px;   /* posición del input */
   left: -200px;
 }
 
+/* 🔒 Campo Contraseña */
 #campo-pass {
   position: absolute;
   top: 496px;
   left: -158px;
 }
 
+/* 🪪 Botón de iniciar sesión (zona clickeable en “Aquí para iniciar sesión”) */
 #zona-boton {
   position: absolute;
   top: 560px;
@@ -67,22 +50,11 @@ body {
   height: 60px;
   cursor: pointer;
   background-color: transparent;
-  background-size: contain;
   border: none;
-}
-
-#zona-volver {
-  position: absolute;
-  top: 300px;
-  left: 100px;
-  width: 50px;
-  height: 30px;
-  cursor: pointer;
-  background-color: transparent;
-  background-size: contain;
   z-index: 1000;
 }
 
+/* 📜 Click en "Pedir hoja de registro" */
 #zona-registro {
   position: absolute;
   top: 295px;
@@ -91,27 +63,34 @@ body {
   height: 30px;
   cursor: pointer;
   background-color: transparent;
-  background-size: contain;
   z-index: 1000;
 }
 
+/* 🔙 Volver (si lo usás) */
+#zona-volver {
+  position: absolute;
+  top: 300px;
+  left: 100px;
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  z-index: 1000;
+}
+
+/* 🧠 Inputs invisibles pero funcionales */
 .login-form input {
   width: 100%;
   padding: 0.75rem 0.9rem;
-  border-radius: 6px;
-  border-color: transparent;
+  border: none;
   background-color: transparent;
   font-size: 1rem;
   outline: none;
+  color: transparent;
+  caret-color: black;
 }
 
-.inputs-contenedor {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  margin-top: -1rem;
-}
-
+/* 🧱 Mensaje de error */
 .mensaje-error {
   position: absolute;
   top: 100px;
@@ -121,9 +100,9 @@ body {
 .mensaje-error img {
   max-width: 700px;
   height: auto;
-  display: block;
 }
 
+/* 📱 Responsivo */
 @media (max-width: 768px) {
   body {
     background-image: url('../Images/fondo-movil-login.jpg');

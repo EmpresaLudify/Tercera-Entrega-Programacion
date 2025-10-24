@@ -55,9 +55,7 @@
 
   <!-- ✅ JS -->
   <!-- 🔹 Definir primero la URL base (así no da error en lang-switch.js) -->
-  <script>
-    const URL_BASE = "<?= URL_BASE ?>";
-  </script>
+
 
   <!-- 🔹 Fade de transición -->
   <script src="<?= URL_BASE ?>fade.js"></script>
@@ -99,5 +97,35 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+<script>
+  const URL_BASE = "<?= URL_BASE ?>";
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  function ajustarRotacion() {
+    const esVertical = window.innerHeight > window.innerWidth;
+    const stage = document.querySelector(".home-stage");
+
+    if (esVertical) {
+      document.body.style.width = window.innerHeight + "px";
+      document.body.style.height = window.innerWidth + "px";
+      stage.style.transform = "rotate(-90deg)";
+      stage.style.width = window.innerHeight + "px";
+      stage.style.height = window.innerWidth + "px";
+    } else {
+      document.body.style.width = "";
+      document.body.style.height = "";
+      stage.style.transform = "";
+      stage.style.width = "";
+      stage.style.height = "";
+    }
+  }
+
+  ajustarRotacion();
+  window.addEventListener("resize", ajustarRotacion);
+});
+</script>
+  <!-- 🔹 Switch de idioma -->
+<script src="<?= URL_BASE ?>assets/js/lang-switch.js" defer></script>
 </body>
 </html>
