@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Dino';
+  src: url('../Fonts/Cute Dino.ttf') format('truetype');
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/Fondo.jpg") center / cover no-repeat;
+  font-family: 'Dino', sans-serif;
+}
+
+.home-stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("../images/Fondo.jpg") center / cover no-repeat;
+  overflow: hidden;
+}
+
+/* 🔧 Asegura stacking correcto dentro de .home-image */
+.home-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(94vw, 176vh);
+  aspect-ratio: 16 / 9;
+  transform: translate(-50%, -50%);
+  background-color: #000e1d;
+  border: 8px solid #000e1d;
+  border-radius: 1.5%;
+  box-shadow: 0 0 50px 8px rgba(0, 14, 29, 0.9);
+  overflow: visible; /* ✅ clave: permite que los hijos reciban eventos */
+  z-index: 1;
+}
+
+.home-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none; /* ✅ deja pasar los clics al overlay */
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔝 Aseguramos que las zonas estén encima del img */
+#zona-jugar,
+#zona-como-jugar,
+#zona-creditos,
+#zona-taquilla,
+#zona-idioma {
+  position: absolute;
+  z-index: 5;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto; /* ✅ activamos recepción de clics */
+}
+
+/* --- Si tenés overlay fade activo, asegurate de que no bloquee --- */
+#overlay-fade,
+#overlay-fade.hide {
+  pointer-events: none !important;
+}
+
+#zona-jugar:hover,
+#zona-como-jugar:hover,
+#zona-creditos:hover,
+#zona-taquilla:hover {
+  filter: brightness(1.2);
+}
+
+#zona-jugar {
+  top: 38.5%;
+  left: 39%;
+  width: 22%;
+  height: 43%;
+}
+
+#zona-taquilla {
+  top: 59%;
+  left: 71%;
+  width: 18.5%;
+  height: 25%;
+}
+
+#zona-como-jugar {
+  top: 52%;
+  left: 8%;
+  width: 13%;
+  height: 7%;
+}
+
+#zona-creditos {
+  top: 63%;
+  left: 8.5%;
+  width: 11%;
+  height: 7%;
+}
+
+#zona-idioma {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  width: 6%;
+  height: 8%;
+  cursor: pointer;
+  background: transparent;
+  z-index: 6;
+}
+
+
+
+header {
+  height: 110px;
+  width: 220px;
+  position: relative;
+  z-index: 2;
+}
+
+header.con-sesion {
+  background: url("../images/HeaderConSesion.png") no-repeat center;
+  background-size: 100% 100%;
+}
+
+.level {
+  position: absolute;
+  top: 74px;
+  left: 75px;
+  color: white;
+  font-size: 1rem;
+}
+
+.bienvenida {
+  position: absolute;
+  top: 36px;
+  left: 65px;
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.bienvenida:hover {
+  color: black;
+  transform: scale(1.05);
+}
+
+.cerrar-sesion {
+  position: absolute;
+  bottom: 5px;
+  right: 120px;
+  font-size: 0.9rem;
+  color: white;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.cerrar-sesion:hover {
+  color: black;
+  transform: scale(1.05);
+}
+
+.menu-central {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.mensaje-error img,
+.iluminacion img {
+  pointer-events: none; /* ✅ no bloquean los clics */
+  z-index: 0; /* ✅ se aseguran de quedar por debajo de las zonas clickeables */
+}
+
+.mensaje-error img,
+.iluminacion img {
+  max-width: 100%;
+  position: fixed;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.mensaje-error img {
+  max-width: 1000px;
+  top: 4.5rem;
+  left: 16.3rem;
+}
+
+.iluminacion img {
+  max-width: 1500px;
+  top: -5rem;
+  left: -6.5rem;
+}
+
+@media (max-width: 768px) {
+  #zona-jugar,
+  #zona-como-jugar,
+  #zona-creditos,
+  #zona-taquilla 
+  #zona-idioma {
+    z-index: 10 !important;
+    position: static;
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 1rem auto;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+  }
+}
+
+
