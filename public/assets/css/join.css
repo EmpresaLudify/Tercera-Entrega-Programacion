@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Dino';
-  src: url('../Fonts/Cute\ Dino.ttf') format('truetype');
+  src: url('../fonts/Cute\ Dino.ttf') format('truetype');
 }
 
 * {
@@ -12,7 +12,7 @@
 
 body {
   min-height: 100vh;
-  background-image: url('../Images/FondoJoin.jpg');
+  background-image: url('../images/FondoJoin.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -90,7 +90,7 @@ button {
 
 #password-container input {
   position: absolute;
-  top: 5px;
+  top: 5px; 
   left: -40px;
   width: 380px;
   padding: 0.75rem;

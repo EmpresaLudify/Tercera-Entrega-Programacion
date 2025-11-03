@@ -1,12 +1,14 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
 
-class AuthController {
+class AuthController
+{
 
-    public function login() {
+    public function login()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $u = new Usuario();
-            $usuario  = trim($_POST['usuario'] ?? '');
+            $usuario = trim($_POST['usuario'] ?? '');
             $password = trim($_POST['password'] ?? '');
 
             if ($usuario === '' || $password === '') {
@@ -20,7 +22,7 @@ class AuthController {
             if ($data) {
                 session_regenerate_id(true);
                 $_SESSION['logueado'] = true;
-                $_SESSION['usuario']  = $data['usuario'];
+                $_SESSION['usuario'] = $data['usuario'];
                 header("Location: index.php?ruta=play");
                 exit;
             } else {
@@ -35,14 +37,15 @@ class AuthController {
         require __DIR__ . '/../views/login.view.php';
     }
 
-    public function register() {
+    public function register()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email     = trim($_POST['email'] ?? '');
-            $usuario   = trim($_POST['usuario'] ?? '');
-            $password  = trim($_POST['password'] ?? '');
+            $email = trim($_POST['email'] ?? '');
+            $usuario = trim($_POST['usuario'] ?? '');
+            $password = trim($_POST['password'] ?? '');
             $confirmar = trim($_POST['confirmar'] ?? '');
 
-            if ($email==='' || $usuario==='' || $password==='' || $confirmar==='') {
+            if ($email === '' || $usuario === '' || $password === '' || $confirmar === '') {
                 $_SESSION['mensaje'] = "../Images/ErrorCampos.png";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $_SESSION['mensaje'] = "../Images/ErrorCorreo.png";
@@ -60,7 +63,7 @@ class AuthController {
                     exit;
                 } catch (Exception $e) {
                     $_SESSION['mensaje'] = "../Images/ErrorRegistro.png";
-                    error_log("[REGISTER ERROR] ".$e->getMessage());
+                    error_log("[REGISTER ERROR] " . $e->getMessage());
                 }
             }
 
@@ -75,7 +78,8 @@ class AuthController {
         require __DIR__ . '/../views/register.view.php';
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_unset();
         session_destroy();
         header("Location: index.php?ruta=login");

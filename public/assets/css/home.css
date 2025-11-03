@@ -1,12 +1,14 @@
+/*  Fuente Dino */
+@font-face {
+  font-family: 'Dino';
+  src: url('../fonts/Cute Dino.ttf') format('truetype');
+}
+
+/*  Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-@font-face {
-  font-family: 'Dino';
-  src: url('../Fonts/Cute Dino.ttf') format('truetype');
 }
 
 body {
@@ -19,6 +21,7 @@ body {
   font-family: 'Dino', sans-serif;
 }
 
+/*  Escenario principal */
 .home-stage {
   position: relative;
   width: 100vw;
@@ -27,226 +30,116 @@ body {
   overflow: hidden;
 }
 
-/* 🔧 Asegura stacking correcto dentro de .home-image */
+/*  Imagen principal 16:9 centrada */
 .home-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(94vw, 176vh);
+  width: min(94vw, 168vh);
   aspect-ratio: 16 / 9;
   transform: translate(-50%, -50%);
-  background-color: #000e1d;
-  border: 8px solid #000e1d;
-  border-radius: 1.5%;
-  box-shadow: 0 0 50px 8px rgba(0, 14, 29, 0.9);
-  overflow: visible; /* ✅ clave: permite que los hijos reciban eventos */
-  z-index: 1;
+  background: url("../images/EntradaAlParque2.jpg") center / cover no-repeat;
+  overflow: hidden;
+  border-radius: 1vw;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+  filter: brightness(0.95);
 }
 
-.home-image img {
+/*  Iluminación interior */
+.home-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
+}
+
+/*  Imagen de fondo */
+#imagen-parque {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
-  pointer-events: none; /* ✅ deja pasar los clics al overlay */
-  position: relative;
-  z-index: 1;
+  object-fit: cover;
 }
 
-/* 🔝 Aseguramos que las zonas estén encima del img */
+/*  Zonas clickeables */
 #zona-jugar,
 #zona-como-jugar,
 #zona-creditos,
 #zona-taquilla,
 #zona-idioma {
   position: absolute;
-  z-index: 5;
-  background: transparent;
   cursor: pointer;
-  pointer-events: auto; /* ✅ activamos recepción de clics */
+  background: rgba(0, 102, 255, 0); /*  Azul translúcido para depuración */
+  border: 1px solid rgba(0, 102, 255, 0);
+  border-radius: 0.5vw;
+  z-index: 10;
 }
 
-/* --- Si tenés overlay fade activo, asegurate de que no bloquee --- */
-#overlay-fade,
-#overlay-fade.hide {
-  pointer-events: none !important;
-}
-
-#zona-jugar:hover,
-#zona-como-jugar:hover,
-#zona-creditos:hover,
-#zona-taquilla:hover
-#zona-idioma:hover {
-  filter: brightness(1.2);
+/*  Botones principales centrados y proporcionados */
+#zona-taquilla {
+  top: 56.5%;
+  left: 42%;
+  width: 16%;
+  height: 6%;
 }
 
 #zona-jugar {
-  top: 38.5%;
-  left: 33%;
-  width: 28%;
-  height: 48%;
-}
-
-#zona-taquilla {
-  top: 55%;             /* antes 65 → sube (más arriba) */
-  left: 66%;            /* antes 73 → se mueve a la izquierda */
-  width: 28%;           /* antes 18.5 → más ancha (≈ +1.5x) */
-  height: 38%;          /* antes 29 → más alta (≈ +1.5x) */
-  cursor: pointer;
-  z-index: 9999;
+  top: 64.5%;
+  left: 42%;
+  width: 16%;
+  height: 6%;
 }
 
 #zona-como-jugar {
-  top: 47.5%;            /* antes 49 → sube un poco */
-  left: 9%;             /* igual que antes, queda bien alineado */
-  width: 15%;            /* antes 13 → más ancho hacia la derecha */
-  height: 9%;            /* antes 7 → más alto (arriba y abajo) */
+  top: 72.5%;
+  left: 42%;
+  width: 16%;
+  height: 6%;
 }
-
 
 #zona-creditos {
-  top: 60%;              /* antes 63 → sube un poco */
-  left: 10.5%;           /* antes 8.5 → un poco más a la derecha */
-  width: 11%;
-  height: 7%;
+  top: 80.5%;
+  left: 42%;
+  width: 16%;
+  height: 6%;
 }
 
+/*  Idioma arriba a la derecha */
 #zona-idioma {
+  top: 7%;
+  right: 5%;
+  width: 5.5%;
+  height: 9%;
+}
+
+/*  Mensajes o iluminación */
+.mensaje-error {
   position: absolute;
-  top: 3%;
-  right: 3%;
-  width: 6%;
-  height: 8%;
-  cursor: pointer;
-  background: transparent;
-  z-index: 6;
+  top: 10%;
+  left: 5%;
+  z-index: 20;
+}
+.mensaje-error img {
+  max-width: 40%;
+  height: auto;
 }
 
-header {
-  height: 110px;
-  width: 220px;
-  position: relative;
-  z-index: 2;
-}
-
-header.con-sesion {
-  background: url("../images/HeaderConSesion.png") no-repeat center;
-  background-size: 100% 100%;
-}
-
-.level {
+.iluminacion {
   position: absolute;
-  top: 74px;
-  left: 75px;
-  color: white;
-  font-size: 1rem;
-}
-
-.bienvenida {
-  position: absolute;
-  top: 36px;
-  left: 65px;
-  color: white;
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s, color 0.2s;
-}
-
-.bienvenida:hover {
-  color: black;
-  transform: scale(1.05);
-}
-
-.cerrar-sesion {
-  position: absolute;
-  bottom: 5px;
-  right: 120px;
-  font-size: 0.9rem;
-  color: white;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transition: transform 0.2s, color 0.2s;
-}
-
-.cerrar-sesion:hover {
-  color: black;
-  transform: scale(1.05);
-}
-
-.menu-central {
-  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  pointer-events: none;
 }
 
-.mensaje-error img,
-.iluminacion img {
-  pointer-events: none; /* ✅ no bloquean los clics */
-  z-index: 0; /* ✅ se aseguran de quedar por debajo de las zonas clickeables */
-}
-
-.mensaje-error img,
-.iluminacion img {
-  max-width: 100%;
-  position: fixed;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.mensaje-error img {
-  max-width: 1000px;
-  top: 4.5rem;
-  left: 16.3rem;
-}
-
-.iluminacion img {
-  max-width: 1500px;
-  top: -5rem;
-  left: -6.5rem;
-}
-
-@media (max-width: 768px) {
-  #zona-jugar,
-  #zona-como-jugar,
-  #zona-creditos,
-  #zona-taquilla 
-  #zona-idioma {
-    z-index: 10 !important;
-    position: static;
-    display: block;
-    width: 80%;
-    height: auto;
-    margin: 1rem auto;
-    background: rgba(255,255,255,0.15);
-    border-radius: 12px;
-  }
-}
-
-/* 📱 ROTAR PÁGINA EN CELULARES (modo vertical) */
-@media screen and (max-aspect-ratio: 1/1) {
-  html, body {
+/*  Giro automático en móviles verticales */
+@media screen and (orientation: portrait) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: center center;
     width: 100vh;
     height: 100vw;
     overflow: hidden;
   }
-
-  .home-stage {
-    transform: rotate(-90deg);
-    transform-origin: center center;
-    width: 100vh;
-    height: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  /* 🔧 Ajusta posición de zonas clickeables */
-  .home-stage * {
-    transform: rotate(90deg);
-  }
 }
-

@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - Draftosaurus</title>
 
-  <!-- ✅ CSS -->
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/register.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/fade.css">
+  <!--  CSS -->
+  <link rel="stylesheet" href="/assets/css/register.css">
+  <link rel="stylesheet" href="/assets/css/fade.css">
 </head>
 
 <body>
-  <!-- 🔙 Volver -->
+  <!--  Volver -->
   <div id="zona-volver"></div>
 
-  <!-- 🦕 Formulario de registro -->
+  <!--  Formulario de registro -->
   <div class="register-container">
-    <form id="form-register" action="<?= URL_BASE ?>index.php?ruta=register" method="POST">
+    <form id="form-register" action="/index.php?ruta=register" method="POST">
       <div class="input-group">
         <input id="usuario" type="text" name="usuario" placeholder="Nombre de usuario" required>
       </div>
@@ -33,22 +33,22 @@
       <div id="zona-enviar"></div>
     </form>
 
-    <!-- ⚠️ Mensaje de error -->
+    <!--  Mensaje de error -->
     <?php if (isset($_SESSION['mensaje'])): ?>
       <div class="mensaje-error">
-        <img src="<?= URL_BASE ?>assets/images/<?= htmlspecialchars($_SESSION['mensaje']) ?>" alt="Error">
+        <img src="/assets/images/<?= htmlspecialchars($_SESSION['mensaje']) ?>" alt="Error">
       </div>
       <div class="iluminacion">
-        <img src="<?= URL_BASE ?>assets/images/<?= htmlspecialchars($_SESSION['mensaje2'] ?? '') ?>" alt="Iluminación">
+        <img src="/assets/images/<?= htmlspecialchars($_SESSION['mensaje2'] ?? '') ?>" alt="Iluminación">
       </div>
       <?php unset($_SESSION['mensaje'], $_SESSION['mensaje2']); ?>
     <?php endif; ?>
   </div>
 
-  <!-- 🧠 Scripts -->
+  <!--  Scripts -->
   <script>
     document.getElementById("zona-volver").addEventListener("click", () => {
-      window.location.href = "<?= URL_BASE ?>index.php?ruta=login";
+      window.location.href = "/index.php?ruta=login";
     });
 
     document.getElementById("zona-enviar").addEventListener("click", () => {
@@ -61,7 +61,7 @@
     }, 3000);
   </script>
 
-  <!-- 🌈 Fade effect -->
-  <script src="<?= URL_BASE ?>fade.js"></script>
+  <!--  Fade effect -->
+  <script src="/fade.js"></script>
 </body>
 </html>

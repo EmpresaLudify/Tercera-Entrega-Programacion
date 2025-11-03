@@ -1,0 +1,37 @@
+services:
+  web:
+    image: php:8.4-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: draftosaurus_web
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - red_interna
+
+  db:
+    image: mariadb:11
+    container_name: draftosaurus_db
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.mari
+    environment:
+      MYSQL_ROOT_PASSWORD: IsboProyecto2025
+      MYSQL_DATABASE: draftosaurus
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - red_interna
+
+volumes:
+  db_data:
+
+networks:
+  red_interna:
+    driver: bridge

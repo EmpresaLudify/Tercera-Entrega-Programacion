@@ -1,0 +1,6 @@
+FROM mariadb:11
+
+COPY ./others/draftosaurus.sql /docker-entrypoint-initdb.d/draftosaurus.sql
+RUN chmod 644 /docker-entrypoint-initdb.d/draftosaurus.sql
+
+EXPOSE 3306

@@ -5,10 +5,10 @@
  * Compatible con tu base Draftosaurus en phpMyAdmin (XAMPP).
  */
 
-define('SERVERNAME', 'localhost');   // igual que tu $host
+define('SERVERNAME', '172.17.0.1');   // igual que tu $host
 define('USERNAME', 'root');          // igual que tu $user
-define('PASSWORD', '');              // igual que tu $pass
-define('DBNAME', 'Draftosaurus');    // igual que tu $dbname
+define('PASSWORD', 'IsboProyecto2025');              // igual que tu $pass
+define('DBNAME', 'draftosaurus');    // igual que tu $dbname
 define('CHARSET', 'utf8mb4');        // versión mejorada de utf8
 
 class Database
@@ -23,7 +23,7 @@ class Database
     private function __construct()
     {
         $host = SERVERNAME;
-        $db   = DBNAME;
+        $db = DBNAME;
         $user = USERNAME;
         $pass = PASSWORD;
         $charset = CHARSET;
@@ -32,9 +32,9 @@ class Database
 
         try {
             $this->conexion = new PDO($dsn, $user, $pass, [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // lanza errores controlables
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // lanza errores controlables
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // devuelve arrays asociativos
-                PDO::ATTR_EMULATE_PREPARES   => false                   // evita SQL Injection
+                PDO::ATTR_EMULATE_PREPARES => false                   // evita SQL Injection
             ]);
         } catch (PDOException $e) {
             // No mostrar errores técnicos al usuario (solo registrar)

@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Draftosaurus - Menú</title>
 
-  <!-- ✅ CSS -->
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/play.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/fade.css">
+  <!--  CSS -->
+  <link rel="stylesheet" href="/assets/css/play.css">
+  <link rel="stylesheet" href="/assets/css/fade.css">
 </head>
 
 <body>
@@ -22,13 +22,13 @@
   <main class="menu-central">
     <div id="zona-NuevaPartida"></div>
     <div id="zona-Opciones"></div>
-    <div id="zona-Salir" data-href="<?= URL_BASE ?>index.php?ruta=home"></div>
+    <div id="zona-Salir" data-href="/index.php?ruta=home"></div>
   </main>
 
   <script>
     // --- Nueva Partida ---
     document.getElementById("zona-NuevaPartida").addEventListener("click", () => {
-      window.location.href = "<?= URL_BASE ?>index.php?ruta=newGame";
+      window.location.href = "/index.php?ruta=newGame";
     });
 
     // --- Opciones ---
@@ -37,7 +37,7 @@
     });
   </script>
 
-  <!-- ✅ JS -->
-  <script src="<?= URL_BASE ?>fade.js"></script>
+  <!--  JS -->
+  <script src="/fade.js"></script>
 </body>
 </html>

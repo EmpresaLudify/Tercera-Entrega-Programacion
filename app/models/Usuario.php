@@ -1,15 +1,18 @@
 <?php
 require_once __DIR__ . '/../core/Database.php';
 
-class Usuario {
+class Usuario
+{
     private PDO $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Database::getInstancia()->getConexion();
     }
 
-    // 🔹 Registrar nuevo usuario
-    public function registrar(string $email, string $usuario, string $password): bool {
+    // Registrar nuevo usuario
+    public function registrar(string $email, string $usuario, string $password): bool
+    {
         // Validaciones básicas
         if (empty($email) || empty($usuario) || empty($password)) {
             throw new Exception("Campos incompletos.");
@@ -37,8 +40,9 @@ class Usuario {
         ]);
     }
 
-    // 🔹 Iniciar sesión
-    public function login(string $usuario, string $password): array|false {
+    // Iniciar sesión
+    public function login(string $usuario, string $password): array|false
+    {
         $stmt = $this->db->prepare("SELECT * FROM usuarios WHERE usuario = :usuario LIMIT 1");
         $stmt->execute([':usuario' => $usuario]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -49,11 +53,12 @@ class Usuario {
         return false;
     }
 
-    // 🔹 Obtener nivel del usuario
-    public function obtenerNivel(string $usuario): ?int {
+    // Obtener nivel del usuario
+    public function obtenerNivel(string $usuario): ?int
+    {
         $stmt = $this->db->prepare("SELECT nivel FROM usuarios WHERE usuario = :usuario");
         $stmt->execute([':usuario' => $usuario]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row ? (int)$row['nivel'] : null;
+        return $row ? (int) $row['nivel'] : null;
     }
 }

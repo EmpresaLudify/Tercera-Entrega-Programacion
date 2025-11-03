@@ -5,62 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Draftosaurus</title>
 
-  <!-- ✅ CSS -->
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/home.css" />
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/fade.css" />
+  <!--  CSS -->
+  <link rel="stylesheet" href="/assets/css/home.css" />
+  <link rel="stylesheet" href="/assets/css/fade.css" />
 </head>
 
 <body>
   <div class="home-stage">
     <div class="home-image">
-      <img id="imagen-parque" src="<?= URL_BASE ?>assets/images/EntradaAlParque2.jpg" alt="Entrada al parque">
+      <img id="imagen-parque" src="/assets/images/EntradaAlParque2.jpg" alt="Entrada al parque">
 
-      <!-- 🗣️ Zona de cambio de idioma -->
+      <!--  Zona de cambio de idioma -->
       <div id="zona-idioma"></div>
 
-      <!-- 🦖 Zonas clickeables -->
+      <!--  Zonas clickeables -->
       <div id="zona-jugar"></div>
       <div id="zona-como-jugar"></div>
       <div id="zona-creditos"></div>
       <div id="zona-taquilla"></div>
     </div>
 
-    <!-- 🪪 Header (usuario logueado) -->
+    <!-- Header (usuario logueado) -->
     <header class="<?= $sesion ? 'con-sesion' : '' ?>">
       <?php if ($sesion): ?>
         <p class="level"><?= htmlspecialchars($lvl) ?></p>
 
-        <form method="POST" action="<?= URL_BASE ?>index.php?ruta=home">
+        <form method="POST" action="/index.php?ruta=home">
           <button type="submit" name="perfil" class="bienvenida">
             <?= htmlspecialchars($usuarioNombre) ?>
           </button>
         </form>
 
-        <form method="POST" action="<?= URL_BASE ?>index.php?ruta=home">
+        <form method="POST" action="/index.php?ruta=home">
           <button type="submit" name="cerrar" class="cerrar-sesion">Cerrar sesión</button>
         </form>
       <?php endif; ?>
     </header>
 
-    <!-- ⚠️ Mensajes de error o inicio -->
+    <!--  Mensajes de error o inicio -->
     <?php if (isset($mensaje)): ?>
       <div class="mensaje-error">
-        <img src="<?= URL_BASE ?>assets/images/<?= htmlspecialchars($mensaje) ?>" alt="Mensaje de error">
+        <img src="/assets/images/<?= htmlspecialchars($mensaje) ?>" alt="Mensaje de error">
       </div>
       <div class="iluminacion">
-        <img src="<?= URL_BASE ?>assets/images/<?= htmlspecialchars($mensaje2) ?>" alt="Iluminación">
+        <img src="/assets/images/<?= htmlspecialchars($mensaje2) ?>" alt="Iluminación">
       </div>
     <?php endif; ?>
   </div>
 
-  <!-- ✅ JS -->
-  <!-- 🔹 Definir primero la URL base (así no da error en lang-switch.js) -->
+  <!--  JS -->
+  <!--  Definir primero la URL base (así no da error en lang-switch.js) -->
 
+  <!--  Fade de transición -->
+  <script src="/fade.js"></script>
 
-  <!-- 🔹 Fade de transición -->
-  <script src="<?= URL_BASE ?>fade.js"></script>
-
-  <!-- 🔹 Zonas clickeables -->
+  <!--  Zonas clickeables -->
   <script>
 document.addEventListener("DOMContentLoaded", () => {
   const zonas = {
@@ -70,14 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
     creditos: "assets/html/creditos.html",
   };
 
-  // ✅ Diagnóstico visual opcional (borde transparente)
+  // Diagnóstico visual opcional (borde transparente)
   Object.keys(zonas).forEach(id => {
     const el = document.getElementById(`zona-${id}`);
     if (el) {
       el.style.pointerEvents = "auto";
       el.style.zIndex = 10;
       el.addEventListener("click", () => {
-        console.log(`✅ Click en zona-${id}`);
+        console.log(` Click en zona-${id}`);
         if (id === "jugar") {
           const form = document.createElement("form");
           form.method = "POST";
@@ -98,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <script>
-  const URL_BASE = "<?= URL_BASE ?>";
+  const URL_BASE = "/";
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -125,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", ajustarRotacion);
 });
 </script>
-  <!-- 🔹 Switch de idioma -->
-<script src="<?= URL_BASE ?>assets/js/lang-switch.js" defer></script>
+  <!--  Switch de idioma -->
+<script src="/assets/js/lang-switch.js" defer></script>
 </body>
 </html>

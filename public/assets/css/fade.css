@@ -5,10 +5,10 @@
   opacity: 1;
   transition: opacity 0.5s ease;
   z-index: 9999;
-  pointer-events: none; /* ✅ permite que los clics pasen al contenido */
+  pointer-events: none; /*  permite que los clics pasen al contenido */
 }
 
 #overlay-fade.hide {
   opacity: 0;
-  pointer-events: none; /* ✅ asegura clics después del fade */
+  pointer-events: none; /*  asegura clics después del fade */
 }

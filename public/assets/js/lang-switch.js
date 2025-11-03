@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const imagenes = {
     es: {
       home: "EntradaAlParque2.jpg",
-      login: "LoginEsp.jpg",
+      login: "FondoInicioSesion.jpg",
       register: "RegisterEsp.jpg",
       creditos: "CreditosEsp.jpg",
       comojugar: "ComoJugarEsp.jpg"
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-    console.log(`🌐 Idioma actual: ${idioma.toUpperCase()}`);
+    console.log(` Idioma actual: ${idioma.toUpperCase()}`);
   }
 
   aplicarIdioma();

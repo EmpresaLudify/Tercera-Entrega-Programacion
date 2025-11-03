@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const jugadorActual = window.USUARIO_ACTUAL || "<?= $_SESSION['usuario'] ?? 'Invitado' ?>";
 
-  console.log("🎮 Sistema de tablero con guardado local iniciado");
+  console.log(" Sistema de tablero con guardado local iniciado");
 
   // Si no existe la estructura local, crearla
   if (!localStorage.getItem("movimientos_partida")) {
     localStorage.setItem("movimientos_partida", JSON.stringify([]));
   }
 
-  // 🦕 Preparar fichas para arrastrar
+  //  Preparar fichas para arrastrar
   fichas.forEach(ficha => {
     ficha.setAttribute("draggable", "true");
 
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 🎯 Preparar zonas de drop
+  //  Preparar zonas de drop
   zonas.forEach(zona => {
     zona.addEventListener("dragover", e => {
       e.preventDefault();
@@ -55,16 +55,16 @@ document.addEventListener("DOMContentLoaded", () => {
       fichaArrastrada.classList.add("en-tablero");
       fichaArrastrada.draggable = false;
 
-      // Registrar la jugada localmente 💾
+      // Registrar la jugada localmente 
       const movimiento = {
-  id_partida: window.PARTIDA_ID, // 🧩 ahora lo guarda correctamente
-  jugador: jugadorActual,
-  color: fichaArrastrada.style.backgroundColor || "#777",
-  zona: zona.dataset.zona,
-  turno: turnoActual++,
-  puntos: calcularPuntos(zona.dataset.zona, fichaArrastrada.dataset.especie),
-  fecha: new Date().toISOString()
-};
+      id_partida: window.PARTIDA_ID, //  ahora lo guarda correctamente
+      jugador: jugadorActual,
+      color: fichaArrastrada.style.backgroundColor || "#777",
+      zona: zona.dataset.zona,
+      turno: turnoActual++,
+      puntos: calcularPuntos(zona.dataset.zona, fichaArrastrada.dataset.especie),
+      fecha: new Date().toISOString()
+    };
 
 
       guardarMovimiento(
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       movimientos.push(movimiento);
       localStorage.setItem("movimientos_partida", JSON.stringify(movimientos));
 
-      console.log("💾 Movimiento registrado:", movimiento);
+      console.log(" Movimiento registrado:", movimiento);
 
       // Enviar la jugada al backend inmediatamente (si querés mantener eso)
       try {
@@ -93,14 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
             zona: zona.dataset.zona
           })
         });
-        console.log("✅ Jugada enviada al backend");
+        console.log(" Jugada enviada al backend");
       } catch (err) {
-        console.error("❌ Error al registrar jugada:", err);
+        console.error(" Error al registrar jugada:", err);
       }
     });
   });
 
-  // 🧮 Calcular puntos según zona (ejemplo simple)
+  //  Calcular puntos según zona (ejemplo simple)
   function calcularPuntos(zona, especie) {
     switch (zona) {
       case "WOODLANDS": return 6;

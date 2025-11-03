@@ -50,21 +50,22 @@ html {
   display: block;
   position: relative;
   z-index: 1;
-  pointer-events: none; /* ⚠️ clave para permitir drop encima */
+  pointer-events: none; /*  clave para permitir drop encima */
 }
 
+/* --- FICHAS SOBRE TABLERO --- */
 /* --- FICHAS SOBRE TABLERO --- */
 .fichas-tablero {
   position: absolute;
   inset: 0;
   display: block;
   z-index: 5;
-  pointer-events: none; /* el contenedor no tapa las zonas */
+  pointer-events: auto; /*  permitir interacciones con las zonas de drop */
 }
 
 /* --- FICHAS --- */
 .ficha {
-  position: relative; /* ✅ antes era absolute */
+  position: relative; /*  antes era absolute */
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -191,21 +192,121 @@ html {
   border-radius: 5px;
 }
 
+.zona-drop::after {
+  content: attr(data-zona);
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  opacity: 0.8;
+}
+
 /* --- ZONAS DE DROP --- */
 .zona-drop {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px dashed rgba(255, 255, 255, 0.2);
   position: absolute;
-  transition: 0.2s ease;
-  pointer-events: auto; /* ✅ recibe eventos drag/drop */
-  z-index: 6; /* por encima del tablero */
+  width: 80px;
+  height: 80px;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  z-index: 10;          /*  asegurar que esté sobre la imagen */
+  pointer-events: auto; /*  permite dropear encima */
 }
 
 .zona-drop.hover {
-  border-color: yellow;
-  background-color: rgba(255, 255, 0, 0.1);
+  border-color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.2);
+}
+
+/*  Bloqueo mientras la partida no comenzó */
+.bloqueo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.mensaje-espera {
+  background: rgba(30, 30, 30, 0.8);
+  border: 2px solid #5cb85c;
+  border-radius: 15px;
+  padding: 25px 40px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(92,184,92,0.8);
+  animation: parpadeo 1.8s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.zona-dado {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#boton-dado {
+  font-size: 1.5rem;
+  background: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#boton-dado:hover {
+  background: #4cae4c;
+}
+
+#resultado-dado {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #eee;
+}
+
+#zona-dado-zona {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#boton-dado-zona {
+  background: #337ab7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#boton-dado-zona:hover {
+  background: #286090;
+}
+
+.ficha-disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+.zona-disabled {
+  filter: grayscale(0.6);
+  pointer-events: auto;   /* dejamos eventos para mostrar hover si querés */
+}
+
+.zona-disabled.hover {    /* si querés, no resaltar cuando está disabled */
+  box-shadow: none !important;
 }
 
 /* --- RESPONSIVE --- */
@@ -222,5 +323,34 @@ html {
   .panel-derecho {
     flex: none;
     width: 100%;
+  }
+}
+
+/* ===  ESTADOS DE ZONAS SEGÚN EL DADO === */
+
+/* Zonas bloqueadas (no se puede colocar en ellas este turno) */
+.zona-bloqueada {
+  pointer-events: none;
+  opacity: 0.5;
+  filter: grayscale(0.8);
+  border: 2px solid rgba(255, 60, 60, 0.6);
+  box-shadow: inset 0 0 8px rgba(255, 0, 0, 0.4);
+  transition: 0.3s ease;
+}
+
+/* Zonas activas (válidas para colocar este turno) */
+.zona-activa {
+  border: 3px solid rgba(60, 255, 60, 0.7);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+  animation: zonaActivaPulse 1.2s infinite alternate;
+}
+
+/* Pequeña animación de pulso para zonas activas */
+@keyframes zonaActivaPulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
   }
 }

@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'Dino';
-  src: url('../Fonts/Cute\ Dino.ttf') format('truetype');
+  src: url('../fonts/Cute\ Dino.ttf') format('truetype');
 }
 
 body {
@@ -17,7 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #000; /* color base por si no carga la imagen */
-  background-image: url('../images/error_partida.png'); /* 👈 solo si querés como fondo */
+  background-image: url('../images/error_partida.png'); /*  solo si querés como fondo */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; /* mismo comportamiento que el resto del sitio */

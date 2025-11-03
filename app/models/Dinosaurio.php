@@ -13,20 +13,20 @@ declare(strict_types=1);
 class Especie
 {
     // 6 especies del modo base (incluye T-Rex como especie especial)
-    public const TREX         = 'TREX';
-    public const STEGOSAURUS  = 'STEG';
-    public const TRICERATOPS  = 'TRIC';
-    public const PARASAURO    = 'PARA';
-    public const DIPLODOCUS   = 'DIPL';
+    public const TREX = 'TREX';
+    public const STEGOSAURUS = 'STEG';
+    public const TRICERATOPS = 'TRIC';
+    public const PARASAURO = 'PARA';
+    public const DIPLODOCUS = 'DIPL';
     public const VELOCIRAPTOR = 'VELO';
 
     /** Nombre legible por especie */
     public const NOMBRE = [
-        self::TREX         => 'T-Rex',
-        self::STEGOSAURUS  => 'Stegosaurus',
-        self::TRICERATOPS  => 'Triceratops',
-        self::PARASAURO    => 'Parasaurolophus',
-        self::DIPLODOCUS   => 'Diplodocus',
+        self::TREX => 'T-Rex',
+        self::STEGOSAURUS => 'Stegosaurus',
+        self::TRICERATOPS => 'Triceratops',
+        self::PARASAURO => 'Parasaurolophus',
+        self::DIPLODOCUS => 'Diplodocus',
         self::VELOCIRAPTOR => 'Velociraptor',
     ];
 
@@ -35,11 +35,11 @@ class Especie
      * Son solo por defecto y NO afectan reglas.
      */
     public const COLOR = [
-        self::TREX         => '#D9534F', // rojo
-        self::STEGOSAURUS  => '#5CB85C', // verde
-        self::TRICERATOPS  => '#5BC0DE', // celeste
-        self::PARASAURO    => '#F0AD4E', // naranja
-        self::DIPLODOCUS   => '#9B59B6', // violeta
+        self::TREX => '#D9534F', // rojo
+        self::STEGOSAURUS => '#5CB85C', // verde
+        self::TRICERATOPS => '#5BC0DE', // celeste
+        self::PARASAURO => '#F0AD4E', // naranja
+        self::DIPLODOCUS => '#9B59B6', // violeta
         self::VELOCIRAPTOR => '#34495E', // gris azulado
     ];
 
@@ -47,8 +47,12 @@ class Especie
     public static function todas(): array
     {
         return [
-            self::TREX, self::STEGOSAURUS, self::TRICERATOPS,
-            self::PARASAURO, self::DIPLODOCUS, self::VELOCIRAPTOR,
+            self::TREX,
+            self::STEGOSAURUS,
+            self::TRICERATOPS,
+            self::PARASAURO,
+            self::DIPLODOCUS,
+            self::VELOCIRAPTOR,
         ];
     }
 
@@ -60,22 +64,24 @@ class Especie
 
 class DadoColocacion
 {
-    // Caras del dado modo verano (base)
-    public const WOODLANDS   = 'WOODLANDS';   // zona boscosa (arriba/izquierda del tablero de verano)
-    public const GRASSLANDS  = 'GRASSLANDS';  // zona de rocas / praderas (abajo/derecha)
-    public const LEFT_SIDE   = 'FOODCOURT';   // lado "Food Court" (izquierda del río)
-    public const RIGHT_SIDE  = 'RESTROOMS';   // lado "Restrooms" (derecha del río)
-    public const EMPTY_PEN   = 'EMPTY_PEN';   // recinto vacío
-    public const NO_TREX     = 'NO_TREX';     // recinto sin T-Rex
+    // Caras del dado modo personalizado
+    public const RIVER = 'RIVER';
+    public const FOREST = 'FOREST';
+    public const PLAINS = 'PLAINS';
+    public const MOUNTAINS = 'MOUNTAINS';
+    public const CAFETERIA = 'CAFETERIA';
+    public const RESTROOMS = 'RESTROOMS';
+    public const T_REX = 'T_REX'; // por ejemplo
 
     /** Etiquetas legibles para UI */
     public const NOMBRE = [
-        self::WOODLANDS  => 'Zona boscosa',
-        self::GRASSLANDS => 'Zona de rocas',
-        self::LEFT_SIDE  => 'Lado Food Court (izq.)',
-        self::RIGHT_SIDE => 'Lado Restrooms (der.)',
-        self::EMPTY_PEN  => 'Recinto vacío',
-        self::NO_TREX    => 'Recinto sin T-Rex',
+        self::RIVER => 'Zona del Río',
+        self::FOREST => 'Bosque',
+        self::PLAINS => 'Llanuras',
+        self::MOUNTAINS => 'Montañas',
+        self::CAFETERIA => 'Cafetería',
+        self::RESTROOMS => 'Baños',
+        self::T_REX => 'Recinto del T-Rex',
     ];
 }
 
@@ -132,7 +138,8 @@ class DinoFactory
      */
     public static function pasarALaIzquierda(array $hands): array
     {
-        if (count($hands) <= 1) return $hands;
+        if (count($hands) <= 1)
+            return $hands;
         $primera = array_shift($hands);
         $hands[] = $primera;
         return $hands;
@@ -172,31 +179,27 @@ class ValidadorDado
     public static function puedeColocar(string $caraDado, array $recinto, string $especie): bool
     {
         switch ($caraDado) {
-            case DadoColocacion::WOODLANDS:
-                return strtoupper($recinto['zona'] ?? '') === 'WOODLANDS';
-
-            case DadoColocacion::GRASSLANDS:
-                return strtoupper($recinto['zona'] ?? '') === 'GRASSLANDS';
-
-            case DadoColocacion::LEFT_SIDE:
-                return strtoupper($recinto['lado'] ?? '') === 'LEFT';
-
-            case DadoColocacion::RIGHT_SIDE:
-                return strtoupper($recinto['lado'] ?? '') === 'RIGHT';
-
-            case DadoColocacion::EMPTY_PEN:
-                return (bool)($recinto['vacio'] ?? false);
-
-            case DadoColocacion::NO_TREX:
-                // Se puede colocar un T-Rex SI el recinto aún no tiene T-Rex.
-                // La restricción dice “colocar en un recinto que no contenga T-Rex”.
-                return !(bool)($recinto['contiene_trex'] ?? false);
-
+            case DadoColocacion::FOREST:
+                return strtoupper($recinto['zona'] ?? '') === 'FOREST';
+            case DadoColocacion::PLAINS:
+                return strtoupper($recinto['zona'] ?? '') === 'PLAINS';
+            case DadoColocacion::MOUNTAINS:
+                return strtoupper($recinto['zona'] ?? '') === 'MOUNTAINS';
+            case DadoColocacion::CAFETERIA:
+                return strtoupper($recinto['zona'] ?? '') === 'CAFETERIA';
+            case DadoColocacion::RESTROOMS:
+                return strtoupper($recinto['zona'] ?? '') === 'RESTROOMS';
+            case DadoColocacion::RIVER:
+                return strtoupper($recinto['zona'] ?? '') === 'RIVER';
+            case DadoColocacion::T_REX:
+                // ejemplo: sólo permite T-Rex si la zona es T_REX
+                return strtoupper($recinto['zona'] ?? '') === 'T_REX';
             default:
-                return true; // por si llega una cara desconocida, no bloquear
+                return true;
         }
     }
 }
+
 
 /**
  * Bonus y puntajes especiales de elementos globales (no de cada recinto):

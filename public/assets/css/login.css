@@ -1,116 +1,154 @@
+/*  Fuente */
 @font-face {
   font-family: 'Dino';
   src: url('../Fonts/Cute Dino.ttf') format('truetype');
 }
 
+/*  Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Dino';
 }
 
 body {
-  min-height: 100vh;
-  background-image: url('../Images/FondoInicioSesion.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url("../images/Fondo.jpg") center / cover no-repeat;
+  font-family: 'Dino', sans-serif;
 }
 
-.login-container {
+/*  Escenario principal (idéntico al home) */
+.login-stage {
   position: relative;
   width: 100vw;
   height: 100vh;
+  background: url("../images/Fondo.jpg") center / cover no-repeat;
+  overflow: hidden;
 }
 
-/* 🧾 Campo Usuario */
-#campo-usuario {
+/*  Imagen principal 16:9 */
+.login-image {
   position: absolute;
-  top: 380px;   /* posición del input */
-  left: -200px;
+  top: 50%;
+  left: 50%;
+  width: min(94vw, 168vh);
+  aspect-ratio: 16 / 9;
+  transform: translate(-50%, -50%);
+  background: url("../images/FondoInicioSesion.jpg") center / cover no-repeat;
+  overflow: hidden;
+  border-radius: 1vw;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+  filter: brightness(0.95);
 }
 
-/* 🔒 Campo Contraseña */
-#campo-pass {
+/*  Efecto de sombra interior (idéntico a home) */
+.login-image::after {
+  content: "";
   position: absolute;
-  top: 496px;
-  left: -158px;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.3) 100%);
+  pointer-events: none;
 }
 
-/* 🪪 Botón de iniciar sesión (zona clickeable en “Aquí para iniciar sesión”) */
-#zona-boton {
-  position: absolute;
-  top: 560px;
-  left: -180px;
-  width: 410px;
-  height: 60px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  z-index: 1000;
+/*  Imagen interna */
+.login-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* 📜 Click en "Pedir hoja de registro" */
+/*  Zonas clickeables invisibles */
 #zona-registro {
   position: absolute;
-  top: 295px;
-  left: -295px;
-  width: 210px;
-  height: 30px;
+  top: 56.5%;
+  left: 16.5%;
+  width: 11%;
+  height: 3.3%;
   cursor: pointer;
-  background-color: transparent;
-  z-index: 1000;
+  background: transparent;
+  z-index: 10;
 }
 
-/* 🔙 Volver (si lo usás) */
 #zona-volver {
   position: absolute;
-  top: 300px;
-  left: 100px;
-  width: 50px;
-  height: 30px;
+  top: 56.5%;
+  left: 13.2%;
+  width: 3%;
+  height: 3.3%;
   cursor: pointer;
-  background-color: transparent;
-  z-index: 1000;
+  background: transparent;
+  z-index: 10;
 }
 
-/* 🧠 Inputs invisibles pero funcionales */
-.login-form input {
-  width: 100%;
-  padding: 0.75rem 0.9rem;
+/*  Campo Usuario */
+#campo-usuario {
+  position: absolute;
+  top: 67.5%;
+  left: 24%;
+  width: 26%;
+  height: 4.9%;
   border: none;
-  background-color: transparent;
-  font-size: 1rem;
+  background: transparent;
+  font-size: 1.3vw;
+  color: #000;
   outline: none;
-  color: transparent;
-  caret-color: black;
 }
 
-/* 🧱 Mensaje de error */
+/*  Campo Contraseña */
+#campo-pass {
+  position: absolute;
+  top: 79.2%;
+  left: 24%;
+  width: 26%;
+  height: 4.9%;
+  border: none;
+  background: transparent;
+  font-size: 1.3vw;
+  color: #000;
+  outline: none;
+}
+
+/*  Botón “Iniciar sesión” */
+#zona-boton {
+  position: absolute;
+  top: 92.2%;
+  left: 24.2%;
+  width: 26%;
+  height: 6%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+#zona-boton:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/*  Mensaje de error */
 .mensaje-error {
   position: absolute;
-  top: 100px;
-  left: -360px;
+  top: 10%;
+  left: 5%;
+  z-index: 20;
 }
-
 .mensaje-error img {
-  max-width: 700px;
+  max-width: 40%;
   height: auto;
 }
 
-/* 📱 Responsivo */
-@media (max-width: 768px) {
+/*  Rotación automática en móvil (idéntico al home) */
+@media screen and (orientation: portrait) {
   body {
-    background-image: url('../Images/fondo-movil-login.jpg');
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  body {
-    background-image: url('../Images/fondo-tablet.jpg');
+    transform: rotate(90deg);
+    transform-origin: center center;
+    width: 100vh;
+    height: 100vw;
+    overflow: hidden;
   }
 }

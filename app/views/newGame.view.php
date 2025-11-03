@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nueva Partida - Draftosaurus</title>
 
-  <!-- ✅ CSS correcto -->
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/NewGame.css">
-  <link rel="stylesheet" href="<?= URL_BASE ?>assets/css/fade.css">
+  <!--  CSS correcto -->
+  <link rel="stylesheet" href="/assets/css/NewGame.css">
+  <link rel="stylesheet" href="/assets/css/fade.css">
 </head>
 
 <body>
   <div class="config-container">
-    <form id="form-nueva-partida" action="<?= URL_BASE ?>index.php?ruta=newGame" method="POST">
+    <form id="form-nueva-partida" action="/index.php?ruta=newGame" method="POST">
       <input type="text" name="nombre" id="nombre" placeholder="Nombre de partida" required>
 
       <!-- Selección de jugadores -->
@@ -33,8 +33,8 @@
       </div>
 
       <div id="password-container" style="display:none;">
-        <!-- ✅ Ruta corregida -->
-        <img id="barra-contraseña" src="<?= URL_BASE ?>assets/images/BarraContraseña.png" alt="Barra contraseña">
+        <!--  Ruta corregida -->
+        <img id="barra-contraseña" src="/assets/images/BarraContraseña.png" alt="Barra contraseña">
         <label for="password"></label>
         <input type="password" name="password" id="password" placeholder="Ingresa una contraseña">
       </div>
@@ -47,7 +47,7 @@
     <div id="zona-volver" class="zona-volver"></div>
   </div>
 
-  <!-- ✅ JS con rutas correctas -->
+  <!--  JS con rutas correctas -->
   <script>
     const jugadoresContainer = document.getElementById("jugadores-container");
     const jugadoresInput = document.getElementById("jugadores");
@@ -61,11 +61,11 @@
     const nombresContainer = document.getElementById("nombres-jugadores-container");
 
     document.getElementById("zona-unirse").addEventListener("click", () => {
-      window.location.href = "<?= URL_BASE ?>index.php?ruta=join";
+      window.location.href = "/index.php?ruta=join";
     });
 
     document.getElementById("zona-volver").addEventListener("click", () => {
-      window.location.href = "<?= URL_BASE ?>index.php?ruta=play";
+      window.location.href = "/index.php?ruta=play";
     });
 
     // Selección de jugadores
@@ -121,7 +121,7 @@
     }
   </script>
 
-  <!-- ✅ Fade -->
-  <script src="<?= URL_BASE ?>fade.js"></script>
+  <!--  Fade -->
+  <script src="/fade.js"></script>
 </body>
 </html>
